@@ -1,0 +1,44 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label>Firstname:</label>
+      <input formControlName="firstname">
+      <div *ngIf="userForm.get('firstname')?.invalid && userForm.get('firstname')?.touched">
+        Firstname is required and should be at least 3 characters long.
+      </div>
+    </div>
+    <div>
+      <label>Lastname:</label>
+      <input formControlName="lastname">
+      <div *ngIf="userForm.get('lastname')?.invalid && userForm.get('lastname')?.touched">
+        Lastname is required and should be at least 3 characters long.
+      </div>
+    </div>
+    <div>
+      <label>Phone Number:</label>
+      <input formControlName="phoneNumber">
+      <div *ngIf="userForm.get('phoneNumber')?.invalid && userForm.get('phoneNumber')?.touched">
+        Phone number is required and should be at least 9 characters long.
+      </div>
+    </div>
+    <button type="submit">submit</button>
+</form>
+  
+
+
+<h1>Array from parent component</h1>
+<div *ngFor="let user of users">
+  {{ user.firstname }} {{ user.lastname }}
+</div>
+<button (click)="emitUsers()">Emit Child Array</button>
+<h1>Array from child component</h1>
+<div *ngFor="let user of usersFromChild">
+  {{ user.firstname }} {{ user.lastname }}
+</div>
+
+
+<h1>Array from parent component</h1>
+<div *ngFor="let user of users">
+  {{ user.firstname }} {{ user.lastname }}
+</div>
+
+<button (click)="displayUsers()">Display Users</button>
